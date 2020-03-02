@@ -29,7 +29,7 @@ function loadImages() {
 		timestamp = new Date().getTime();
 		while (i < count) {
 			i++;
-			filename = "https://server.funkycameras.gq/camera/" + i + ".jpg";
+			filename = "https://www.trafficnz.info/camera/" + i + ".jpg";
 			$('.container').append('<img class=img src="' + filename + '?t=' + timestamp + '" onError="removeElement(this)" onLoad="increaseCount(this)" />');
 		}
 		setTimeout(function() {
