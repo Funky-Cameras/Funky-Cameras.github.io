@@ -5,18 +5,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <div id=load>
-      <span id=load-title>Funky Cameras</span>
-    </div>
-	<div id=navcircle onClick="openNav()"><img src="./menu.png" /></div>
+	<div id=navcircle onClick="openNav()"><img id=menuimg src="./menu.png" /><img id=loadimg src="./loading.png" /></div>
 	<div id=nav-black onClick="closeNav()"></div>
 	<div id=nav-container>
 		<button id=loadbutton onClick="loadImages()">Load All Cameras</button>
-		<button id=reloadbutton onClick="reloadImages()">Reload All Cameras</button>
-		<span id=count>0 Images Loaded</span>
+		<button id=reloadbutton onClick="reloadImages()" style="display:none">Reload All Cameras</button>
+		<div class="slidecontainer">
+		  <input type="range" min="1" max="22" value="5" class="slider" id="columnslider">
+		</div>
+		<span id=count>Checking 0 Cameras</span>
 	</div>
     <div class=container>
     </div>
+	<button id=loader onClick="loadImages()">Load Cameras</button>
+	<div id=popupbacking onClick="closeImg()"></div>
+	<div id=popup>
+	</div>
   </body>
   <script src="./script.js"></script>
 </html>

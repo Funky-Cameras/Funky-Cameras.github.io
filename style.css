@@ -3,23 +3,12 @@ body {
     /*overflow-y: hidden;*/
 	background-color: black;
 }
+
 @font-face {
     font-family: CaviarDreams;
     src: url("./CaviarDreams.ttf") format("truetype");
 }
-#load {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    z-index: 99;
-    transition: opacity 0.4s;
-    font-family: CaviarDreams;
-    color: white;
-    line-height: 100vh;
-    text-align: center;
-    font-size: 1.5em;
-}
+
 .container img {
     width: 100%;
     margin: 0px;
@@ -28,6 +17,7 @@ body {
 	opacity: 0;
 	transition: opacity 1s;
 }
+
 .container {
     line-height: 0;
     column-gap: 5px;
@@ -54,7 +44,7 @@ body {
 
 #navcircle img {
 	width: 40px;
-	position: relative;
+	position: absolute;
 	top: 5px;
 	left: 5px;
 	transition: 0.3s;
@@ -92,4 +82,117 @@ body {
 	bottom: 0px;
 	display: block;
 	margin: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+#loadimg {
+	display: none;
+	animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+	0% {transform: rotate(0deg)}
+	100% {transform: rotate(359deg)}
+}
+
+.slidecontainer {
+	width: 80%;
+	margin-left: 10%;
+	position: absolute;
+	bottom: 50px;
+}
+
+.slider {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 5px;
+	background-color: rgb(150,150,150);
+	outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	background: black;
+	cursor: pointer;
+	outline: none;
+	border-radius: 0px;
+}
+
+.slider::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	background: black;
+	cursor: pointer;
+	border-radius: 0px;
+}
+
+#loader {
+	outline: none;
+	border: 2px solid white;
+	font-size: 1.5em;
+	position: fixed;
+	width: 200px;
+	left: calc(50% - 100px);
+	line-height: 50px;
+	top: calc(50vh - 25px);
+	background-color: black;
+	color: white;
+	cursor: pointer;
+	transition: opacity 0.3s;
+}
+
+#loader:hover {
+	top: calc(50vh - 20px);
+}
+
+#nav-container button {
+	outline: none;
+	display: block;
+	width: calc(100% - 20px);
+	text-align: center;
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 1em;
+	margin: 10px;
+}
+
+#nav-container button {
+	text-decoration: underline;
+}
+
+#popupbacking {
+	position: fixed;
+	opacity: 0;
+	width: 100%;
+	height: 100vh;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	transition: opacity 0.3s;
+	pointer-events: none;
+	z-index: 82;
+}
+
+#popup {
+	position: fixed;
+	width: 80%;
+	height: 80vh;
+	top: 10vh;
+	left: 10%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	line-height: 80vh;
+	background-image: url('https://www.trafficnz.info/camera/306.jpg?t=1583141560770');
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s;
+	z-index: 83;
 }
