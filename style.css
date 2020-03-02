@@ -79,7 +79,7 @@ body {
 
 #count {
 	position: absolute;
-	bottom: 0px;
+	bottom: 50px;
 	display: block;
 	margin: 10px;
 	text-align: center;
@@ -100,7 +100,7 @@ body {
 	width: 80%;
 	margin-left: 10%;
 	position: absolute;
-	bottom: 50px;
+	bottom: 100px;
 }
 
 .slider {
