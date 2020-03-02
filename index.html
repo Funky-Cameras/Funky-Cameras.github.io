@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>FunkyCameras</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <style>
+    body {
+      margin: 0px;
+      overflow-y: hidden;
+    }
+    @font-face {
+      font-family: CaviarDreams;
+      src: url("./CaviarDreams.ttf") format("truetype");
+    }
+    #load {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      z-index: 99;
+      transition: opacity 0.4s;
+      font-family: CaviarDreams;
+      color: white;
+      line-height: 100vh;
+      text-align: center;
+      font-size: 1.5em;
+    }
+    img {
+      width: 100%;
+      margin: 0px;
+      padding: 0px;
+      margin-top: 5px;
+    }
+    .container {
+      line-height: 0;
+      column-gap: 5px;
+    }
+  </style>
+  <body>
+    <div id=load>
+      <span id=load-title>Loading Some Funky Cameras</span>
+    </div>
+    <div class=container>
+    </div>
+  </body>
+<script>
+var i = 0;
+var filename;
+var count = 1000;
+var message;
+function loadImages() {
+  while (i < count) {
+    i++;
+    filename = "https://www.trafficnz.info/camera/" + i + ".jpg";
+    $('.container').append('<img src="' + filename + '" onError="removeElement(this)" onLoad="increaseCount()" />');
+  }
+}
+loadImages();
+</script>
+<script>
+function removeElement(element) {
+  element.remove();
+}
+</script>
+<script>
+images = document.querySelectorAll(".container img");
+function increaseCount() {
+  if ((count - images.length) < 1000) {
+    count = count + 1000;
+    loadImages();
+  }
+}
+</script>
+<script>
+window.onload = function() {
+  document.getElementsByClassName('container')[0].style.columnCount = 5;
+  document.documentElement.style.overflowY = 'scroll';
+  setTimeout(function() {
+    document.getElementById('load').style.opacity = 0;
+    document.getElementById('load').style.pointerEvents = 'none';
+  }, 500);
+}
+</script>
+</html>
