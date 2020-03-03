@@ -2,11 +2,7 @@ body {
     margin: 0px;
     /*overflow-y: hidden;*/
 	background-color: black;
-}
-
-@font-face {
-    font-family: CaviarDreams;
-    src: url("./CaviarDreams.ttf") format("truetype");
+	font-family: Verdana;
 }
 
 .container img {
@@ -15,7 +11,8 @@ body {
     padding: 0px;
     margin-top: 5px;
 	opacity: 0;
-	transition: opacity 1s;
+	transition: 2s;
+	cursor: pointer;
 }
 
 .container {
@@ -195,4 +192,44 @@ body {
 	pointer-events: none;
 	transition: opacity 0.3s;
 	z-index: 83;
+}
+
+#popup span {
+	position: fixed;
+	top: calc(5vh - 10px);
+	width: 100%;
+	display: block;
+	color: white;
+	line-height: 10px;
+	margin: 0px;
+	left: 0px;
+	text-align: center;
+	font-size: 2em;
+}
+
+#listcontainer {
+	position: fixed;
+	top: 0px;
+	left: -300px;
+	width: 300px;
+	height: 100vh;
+	background-color: white;
+	transition: left 0.6s;
+	z-index: 81;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#listcontainer span {
+	display: block;
+	width: 300px;
+	margin: 0px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#listcontainer span:hover {
+	text-decoration: underline;
 }

@@ -10,18 +10,22 @@
 	<div id=navcircle onClick="openNav()"><img id=menuimg src="./menu.png" /><img id=loadimg src="./loading.png" /></div>
 	<div id=nav-black onClick="closeNav()"></div>
 	<div id=nav-container>
-		<button id=loadbutton onClick="loadImages()">Load All Cameras</button>
-		<button id=reloadbutton onClick="reloadImages()" style="display:none">Reload All Cameras</button>
-		<div class="slidecontainer">
-		  <input type="range" min="1" max="22" value="5" class="slider" id="columnslider">
-		</div>
-		<span id=count>Checking 0 Cameras</span>
+	  <button id=loadbutton onClick="loadImages()">Load All Cameras</button>
+	  <button id=reloadbutton onClick="reloadImages()" style="display:none">Reload All Cameras</button>
+	  <button id=listcameras onClick="openList()">List Cameras</button>
+	  <div class="slidecontainer">
+		<input type="range" min="1" max="22" value="5" class="slider" id="columnslider">
+	  </div>
+	  <span id=count>Found 0 Cameras</span>
+	</div>
+	<div id=listcontainer>
 	</div>
     <div class=container>
     </div>
 	<button id=loader onClick="loadImages()">Load Cameras</button>
 	<div id=popupbacking onClick="closeImg()"></div>
 	<div id=popup>
+		<span id=popupname>Camera X</span>
 	</div>
   </body>
   <script src="./script.js"></script>

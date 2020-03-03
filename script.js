@@ -12,6 +12,11 @@ function closeNav() {
 	document.getElementById('nav-container').style.left = '-300px';
 	document.getElementById('nav-black').style.opacity = '0';
 	document.getElementById('nav-black').style.pointerEvents = 'none';
+	document.getElementById('listcontainer').style.left = '-300px';
+}
+
+function openList() {
+	document.getElementById('listcontainer').style.left = '0px';
 }
 
 var i = 0;
@@ -25,6 +30,7 @@ var cache;
 var loaded = 0;
 var openSrc = '';
 var cacheImg = '';
+var listed = [];
 
 function loadImages() {
 	closeNav();
@@ -36,7 +42,7 @@ function loadImages() {
 		while (i < count) {
 			i++;
 			filename = "https://www.trafficnz.info/camera/" + i + ".jpg";
-			$('.container').append('<img class=img src="' + filename + '?t=' + timestamp + '" onError="removeElement(this)" onLoad="increaseCount(this)" onClick="openImg(this)" />');
+			$('.container').append('<img class=img src="' + filename + '?t=' + timestamp + '" onError="removeElement(this)" onLoad="increaseCount(this, ' + i + ')" onClick="openImg(this, ' + i + ')" id="' + i + '" />');
 		}
 		document.getElementById('reloadbutton').style.display = 'block';
 		document.getElementById('loadbutton').style.display = 'none';
@@ -49,9 +55,14 @@ function loadImages() {
 
 var images = document.querySelectorAll(".container img");
 
-function increaseCount(question) {
+function increaseCount(question, id) {
 	images = document.querySelectorAll(".container img");
+	if (!listed.includes(id)) {
+		$('#listcontainer').append('<span onClick="openImgFromList(' + id + ')">Camera ' + id + '</span>');
+		listed[id] = id;
+	}
 	question.style.opacity = 1;
+	question.style.width = '100%';
 	if ((count - images.length) < 1) {
 		count = count + 1000;
 		loadImages();
@@ -60,7 +71,7 @@ function increaseCount(question) {
 
 setInterval(function() {
 	images = document.querySelectorAll(".container img");
-	document.getElementById('count').innerHTML = 'Checking ' + images.length + ' Cameras';
+	document.getElementById('count').innerHTML = 'Found ' + images.length + ' Cameras';
 }, 500);
 
 setInterval(function() {
@@ -108,12 +119,24 @@ function reloadImages() {
 	}, 600);
 }
 
-function openImg(question) {
+function openImg(question, id) {
 	document.getElementById('popup').style.backgroundImage = 'url("' + question.src + '")';
 	document.getElementById('popup').style.opacity = 1;
 	document.getElementById('popupbacking').style.opacity = 0.8;
 	document.getElementById('popupbacking').style.pointerEvents = 'auto';
+	document.getElementById('popupname').innerHTML = 'Camera ' + id;
 	opensrc = question.src;
+	cacheImg = opensrc.indexOf('?');
+	opensrc = opensrc.substring(0, cacheImg != -1 ? cacheImg : opensrc.length);
+}
+
+function openImgFromList(id) {
+	document.getElementById('popup').style.backgroundImage = 'url("' + document.getElementById(id).src + '")';
+	document.getElementById('popup').style.opacity = 1;
+	document.getElementById('popupbacking').style.opacity = 0.8;
+	document.getElementById('popupbacking').style.pointerEvents = 'auto';
+	document.getElementById('popupname').innerHTML = 'Camera ' + id;
+	opensrc = document.getElementById(id).src;
 	cacheImg = opensrc.indexOf('?');
 	opensrc = opensrc.substring(0, cacheImg != -1 ? cacheImg : opensrc.length);
 }
