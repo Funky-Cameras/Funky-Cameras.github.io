@@ -3,8 +3,9 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Funky Cameras</title>
-	<link href="./style.css" rel="stylesheet" type="text/css" />
+	  <link href="./style.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script data-ad-client="ca-pub-6680148829466195" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </head>
   <body>
 	<div id=navcircle onClick="openNav()"><img id=menuimg src="./menu.png" /><img id=loadimg src="./loading.png" /></div>
@@ -13,6 +14,7 @@
 	  <button id=loadbutton onClick="loadImages()">Load All Cameras</button>
 	  <button id=reloadbutton onClick="reloadImages()" style="display:none">Reload All Cameras</button>
 	  <button id=listcameras onClick="openList()">List Cameras</button>
+    <button id=expandcameras onClick="openExpand()">Crawl More Cameras</button>
 	  <div class="slidecontainer">
 		<input type="range" min="1" max="22" value="5" class="slider" id="columnslider">
 	  </div>
@@ -20,8 +22,13 @@
 	</div>
 	<div id=listcontainer>
 	</div>
-    <div class=container>
-    </div>
+  <div id=expandcontainer>
+    <span id=crawlerspan>How many more cameras should we crawl?</span>
+    <input id=crawlerinput type=text></input>
+    <a id=crawler onClick="crawl()">Crawl</a>
+	</div>
+  <div class=container>
+  </div>
 	<button id=loader onClick="loadImages()">Load Cameras</button>
 	<div id=popupbacking onClick="closeImg()"></div>
 	<div id=popup>
